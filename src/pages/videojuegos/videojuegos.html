@@ -1,0 +1,32 @@
+<!--
+  Generated template for the VideojuegosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>videojuegos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style= "background-color: rgb(224, 240, 235)">
+<ion-grid>
+  <ion-row>
+    <ion-col *ngFor= "let video of videos" col-4 >
+      <ion-card (click)="vervideo(video)"  style="background-color:cadetblue">
+      <img *ngIf= "video.ad.hasOwnProperty('thumbnail')"
+      src="http://img.segundamano.mx/cover/{{video.ad.thumbnail.path}}">
+      <img *ngIf= "!video.ad.hasOwnProperty('thumbnail')"
+      src="../assets/imgs/logo.png">
+      <ion-item>
+        <h2 *ngIf= "video.ad.hasOwnProperty('prices')">{{video.ad.subject}}</h2>
+        <p *ngIf= "video.ad.hasOwnProperty('locations')">{{video.ad.locations[0].locations[0].label}},{{video.ad.locations[0].label}}</p>
+        <h2 *ngIf= "video.ad.hasOwnProperty('prices')"> {{video.ad.prices[0].label}}</h2>
+      </ion-item>
+
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

@@ -1,0 +1,77 @@
+<!--
+  Generated template for the MueblePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>información</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding  style= "background-color: rgb(224, 240, 235)">
+<ion-card  style="background-color:cadetblue">
+  <ion-slides pager>
+    <ion-slide *ngFor ="let img of imgs">
+      <img src= "https://img.segundamano.mx/medium/{{img.path}}">
+    </ion-slide>
+  </ion-slides>
+</ion-card>
+<ion-card>
+    <ion-item>
+        {{mueble.ad.subject}}
+        <ion-icon name= "heart" item-end (click)= "favoritos(mueble)" ></ion-icon>
+      </ion-item>
+      <p>
+          {{mueble.ad.locations[0].label}},{{mueble.ad.locations[0].label}}
+        </p>
+        <h2 *ngIf= "mueble.ad.hasOwnProperty('list_price')">
+          {{mueble.ad.list_price.label}}
+        </h2>
+        
+      
+      <ion-item>
+        <h2 *ngIf= "mueble.ad.hasOwnProperty('list_price')">{{mueble.ad.list_price.label}}</h2>
+        <ion-icon name= "share" item-end></ion-icon>
+      </ion-item>
+      <ion-card-content>
+        
+      </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src= "../assets/imgs/logo.png">
+    </ion-avatar >
+    <h2 *ngIf="mueble.ad.hasOwnProperty('user')">
+      {{mueble.ad.user.account.name}}
+    </h2>
+    <p *ngIf="mueble.ad.hasOwnProperty('user')">
+      {{mueble.ad.user.account.since}}
+    </p>
+  </ion-item>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    Características
+  </ion-card-header>
+  <ion-card-content>
+    <h2>
+      ubicación: {{mueble.ad.locations[0].locations[0].locations[0].label}},
+      {{mueble.ad.locations[0].locations.label}},
+      {{mueble.ad.locations[0].label}}
+    </h2>
+    <h2 *ngIf="mueble.ad.hasOwnProperty('list_time')">
+       Publicado: {{mueble.ad.list_time.label}}
+    </h2>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+    <p>
+     Descripción: {{mueble.ad.body}}
+    </p>
+  </ion-card-content>
+</ion-card>
+</ion-content>

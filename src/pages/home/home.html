@@ -1,14 +1,43 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+    Segunda Mano
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)= "buscar()">
+        <ion-icon name= "search">
+
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding  style= "background-color: rgb(224, 240, 235)">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor= "let mueble of muebles" col-4>
+        <ion-card (click)="vermueble(mueble)" style="background-color:cadetblue">
+         <img *ngIf = "mueble.ad.hasOwnProperty('thumbnail')==true"
+        src="http://img.segundamano.mx/cover/{{mueble.ad.thumbnail.path}}">
+        <img *ngIf = "mueble.ad.hasOwnProperty('thumbnail')==false"
+        src="http://www.comferconstruccionyseguridad.com/wp-content/uploads/bfi_thumb/remodelar_tuna_construccion-32ftuijzfb8hc38ey8s074.jpg">
+        
+        <ion-card-content>
+           <h1 *ngIf="mueble.ad.hasOwnProperty('subject')">
+             {{mueble.ad.subject}}
+           </h1>
+           <p>
+             {{mueble.ad.locations[0].label}},{{mueble.ad.locations[0].label}}
+           </p>
+           <h2 *ngIf= "mueble.ad.hasOwnProperty('list_price')">
+             {{mueble.ad.list_price.label}}
+           </h2>
+           
+        </ion-card-content>
+ 
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
